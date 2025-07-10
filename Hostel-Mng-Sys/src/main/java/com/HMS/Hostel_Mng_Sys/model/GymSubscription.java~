@@ -1,0 +1,14 @@
+package com.HMS.Hostel_Mng_Sys.model;
+
+import jakarta.persistence.*;
+import lombok.Data;
+
+@Entity
+@Table(name="gym_subscription")
+@Data
+public class GymSubscription {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+}

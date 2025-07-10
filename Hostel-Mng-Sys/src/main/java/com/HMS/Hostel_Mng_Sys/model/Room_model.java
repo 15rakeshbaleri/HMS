@@ -1,0 +1,33 @@
+package com.HMS.Hostel_Mng_Sys.model;
+
+import jakarta.persistence.*;
+import lombok.*;
+
+import java.util.List;
+
+@Entity
+@Table(name = "rooms")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+public class Room_model {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;  // Unique identifier for the room
+
+    @Column(nullable = false, unique = true)
+    private String roomNumber;  // Unique room number (e.g., A101, B203)
+
+    @Column(nullable = false)
+    private int capacity = 3;  // Maximum number of students the room can accommodate
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private Room_status status;  // Room availability status (AVAILABLE, OCCUPIED, UNDER_MAINTENANCE)
+
+    @OneToMany(mappedBy = "room", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Student_model> students;  // List of students assigned to this room
+}

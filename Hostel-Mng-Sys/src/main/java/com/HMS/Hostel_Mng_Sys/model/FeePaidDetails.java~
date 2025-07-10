@@ -1,0 +1,32 @@
+package com.HMS.Hostel_Mng_Sys.model;
+
+import jakarta.persistence.*;
+import lombok.Data;
+
+import java.time.LocalDate;
+
+@Data
+@Entity
+@Table(name = "fee_paid_details")
+public class FeePaidDetails {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @ManyToOne
+    @JoinColumn(name = "fee_id", nullable = false)
+    private Fee fee;
+
+
+    @Column(nullable = false)
+    private Double paidAmount;  // Amount paid in the transaction
+
+    @Column(nullable = false)
+    private LocalDate paymentDate;  // Date of payment
+
+    @Column(nullable = true)
+    private String paymentMethod;  // Payment method (e.g., "Cash", "Online Transfer")
+
+    @Column(nullable = true)
+    private String referenceNumber;  // Reference number for the payment (if applicable)
+}

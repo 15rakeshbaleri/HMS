@@ -1,0 +1,34 @@
+package com.HMS.Hostel_Mng_Sys.model;
+
+import jakarta.persistence.*;
+import lombok.*;
+
+import java.time.LocalDateTime;
+import java.util.List;
+
+@Entity
+@Table(name = "notifications")
+@Data
+public class Notification_model {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(nullable = false)
+    private String message;  // Notification message
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private Notification_type type;  // Type of notification (e.g., INFO, ALERT, REMINDER)
+
+    @Column(nullable = false)
+    private LocalDateTime sentAt;  // Date and time when the notification was sent
+
+
+    @ManyToOne
+    @JoinColumn(name = "student_id") // You can change the column name as needed
+    private Student_model student;
+
+
+}

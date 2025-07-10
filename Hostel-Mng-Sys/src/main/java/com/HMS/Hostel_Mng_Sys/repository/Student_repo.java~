@@ -1,0 +1,7 @@
+package com.HMS.Hostel_Mng_Sys.repository;
+
+import com.HMS.Hostel_Mng_Sys.model.Student_model;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface Student_repo extends JpaRepository<Student_model, Long> {
+}
